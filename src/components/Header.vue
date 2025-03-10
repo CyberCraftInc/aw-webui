@@ -146,7 +146,7 @@ export default {
         return this.activityViews[0].pathUrl;
       }
       return '/';
-    },
+    }
   },
   mounted: async function () {
     const bucketStore = useBucketsStore();
