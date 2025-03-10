@@ -77,7 +77,7 @@ div
   aw-uncategorized-notification()
 
   ul.row.nav.nav-tabs.mt-4
-    li.nav-item(v-for="view in views")
+    li.nav-item(v-for="view in views.slice(0,1)")
       router-link.nav-link(:to="{ name: 'activity-view', params: {...$route.params, view_id: view.id}, query: $route.query}" :class="{'router-link-exact-active': currentView.id == view.id}")
         h6 {{view.name}}
 

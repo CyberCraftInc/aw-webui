@@ -3,9 +3,9 @@ div(:class="{'fixed-top-padding': fixedTopMenu}")
   b-navbar.aw-navbar(toggleable="lg" :fixed="fixedTopMenu ? 'top' : null")
     // Brand on mobile
     b-navbar-nav.d-block.d-lg-none
-      b-navbar-brand(to="/" style="background-color: transparent;")
+      b-navbar-brand(:to="activityPathUrl" style="background-color: transparent;")
         img.aligh-middle(src="/logo.png" style="height: 1.5em;")
-        span.ml-2.align-middle(style="font-size: 1em; color: #000;") ActivityWatch
+        span.ml-2.align-middle(style="font-size: 1em; color: #000;") NEXUS
 
     b-navbar-toggle(target="nav-collapse")
 
@@ -34,55 +34,60 @@ div(:class="{'fixed-top-padding': fixedTopMenu}")
             icon(:name="view.icon")
             | {{ view.name }}
 
-        b-nav-item(to="/timeline" style="font-color: #000;")
-          div.px-2.px-lg-1
-            icon(name="stream")
-            | Timeline
+        // Timeline item (commented out as requested)
+        //b-nav-item(to="/timeline" style="font-color: #000;")
+        //  div.px-2.px-lg-1
+        //    icon(name="stream")
+        //    | Timeline
 
-        b-nav-item(to="/stopwatch")
-          div.px-2.px-lg-1
-            icon(name="stopwatch")
-            | Stopwatch
+        // Stopwatch item (commented out as requested)
+        //b-nav-item(to="/stopwatch")
+        //  div.px-2.px-lg-1
+        //    icon(name="stopwatch")
+        //    | Stopwatch
 
       // Brand on large screens (centered)
       b-navbar-nav.abs-center.d-none.d-lg-block
-        b-navbar-brand(to="/" style="background-color: transparent;")
+        b-navbar-brand(:to="activityPathUrl" style="background-color: transparent;")
           img.ml-0.aligh-middle(src="/logo.png" style="height: 1.5em;")
-          span.ml-2.align-middle(style="font-size: 1.0em; color: #000;") ActivityWatch
+          span.ml-2.align-middle(style="font-size: 1.0em; color: #000;") NEXUS
 
       b-navbar-nav.ml-auto
-        b-nav-item-dropdown
-          template(slot="button-content")
-            div.d-inline.px-2.px-lg-1
-              icon(name="tools")
-              | Tools
-          b-dropdown-item(to="/search")
-            icon(name="search")
-            | Search
-          b-dropdown-item(to="/trends" v-if="devmode")
-            icon(name="chart-line")
-            | Trends
-          b-dropdown-item(to="/report" v-if="devmode")
-            icon(name="chart-pie")
-            | Report
-          b-dropdown-item(to="/alerts" v-if="devmode")
-            icon(name="flag-checkered")
-            | Alerts
-          b-dropdown-item(to="/timespiral" v-if="devmode")
-            icon(name="history")
-            | Timespiral
-          b-dropdown-item(to="/query")
-            icon(name="code")
-            | Query
-          b-dropdown-item(to="/graph" v-if="devmode")
-            // TODO: use circle-nodes instead in the future
-            icon(name="project-diagram")
-            | Graph
+        // Tools dropdown (commented out as requested)
+        //b-nav-item-dropdown
+        //  template(slot="button-content")
+        //    div.d-inline.px-2.px-lg-1
+        //      icon(name="tools")
+        //      | Tools
+        //  b-dropdown-item(to="/search")
+        //    icon(name="search")
+        //    | Search
+        //  b-dropdown-item(to="/trends" v-if="devmode")
+        //    icon(name="chart-line")
+        //    | Trends
+        //  b-dropdown-item(to="/report" v-if="devmode")
+        //    icon(name="chart-pie")
+        //    | Report
+        //  b-dropdown-item(to="/alerts" v-if="devmode")
+        //    icon(name="flag-checkered")
+        //    | Alerts
+        //  b-dropdown-item(to="/timespiral" v-if="devmode")
+        //    icon(name="history")
+        //    | Timespiral
+        //  b-dropdown-item(to="/query")
+        //    icon(name="code")
+        //    | Query
+        //  b-dropdown-item(to="/graph" v-if="devmode")
+        //    // TODO: use circle-nodes instead in the future
+        //    icon(name="project-diagram")
+        //    | Graph
 
-        b-nav-item(to="/buckets")
-          div.px-2.px-lg-1
-            icon(name="database")
-            | Raw Data
+        // Raw Data item (commented out as requested)
+        //b-nav-item(to="/buckets")
+        //  div.px-2.px-lg-1
+        //    icon(name="database")
+        //    | Raw Data
+            
         b-nav-item(to="/settings")
           div.px-2.px-lg-1
             icon(name="cog")
@@ -98,24 +103,21 @@ div(:class="{'fixed-top-padding': fixedTopMenu}")
 <script lang="ts">
 // only import the icons you use to reduce bundle size
 import 'vue-awesome/icons/calendar-day';
-import 'vue-awesome/icons/calendar-week';
-import 'vue-awesome/icons/stream';
-import 'vue-awesome/icons/database';
-import 'vue-awesome/icons/search';
-import 'vue-awesome/icons/code';
-import 'vue-awesome/icons/chart-line'; // TODO: switch to chart-column, when vue-awesome supports FA v6
-import 'vue-awesome/icons/chart-pie';
-import 'vue-awesome/icons/flag-checkered';
-import 'vue-awesome/icons/stopwatch';
+//import 'vue-awesome/icons/calendar-week';
+//import 'vue-awesome/icons/stream';
+//import 'vue-awesome/icons/database';
+//import 'vue-awesome/icons/search';
+//import 'vue-awesome/icons/code';
+//import 'vue-awesome/icons/chart-line';
+//import 'vue-awesome/icons/chart-pie';
+//import 'vue-awesome/icons/flag-checkered';
+//import 'vue-awesome/icons/stopwatch';
 import 'vue-awesome/icons/cog';
-import 'vue-awesome/icons/tools';
-import 'vue-awesome/icons/history';
+//import 'vue-awesome/icons/tools';
+//import 'vue-awesome/icons/history';
 
-// TODO: use circle-nodes instead in the future
-import 'vue-awesome/icons/project-diagram';
-//import 'vue-awesome/icons/cicle-nodes';
-
-import 'vue-awesome/icons/ellipsis-h';
+//import 'vue-awesome/icons/project-diagram';
+//import 'vue-awesome/icons/ellipsis-h';
 
 import 'vue-awesome/icons/mobile';
 import 'vue-awesome/icons/desktop';
@@ -138,6 +140,13 @@ export default {
   },
   computed: {
     ...mapState(useSettingsStore, ['devmode']),
+    // Compute the path for the first activity view or fallback to default path
+    activityPathUrl() {
+      if (this.activityViews && this.activityViews.length > 0) {
+        return this.activityViews[0].pathUrl;
+      }
+      return '/';
+    },
   },
   mounted: async function () {
     const bucketStore = useBucketsStore();
